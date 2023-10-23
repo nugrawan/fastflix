@@ -1,0 +1,56 @@
+<template>
+    <nuxt-link class="card-link" :to="to">
+        <b-badge v-if="isMovie" variant="danger"> {{ badge }}</b-badge>
+        <b-badge v-else variant="danger">Episode {{ badge }}</b-badge>
+        <b-card bg-variant="transparent" img-top text-variant="white" :img-src="image" img-alt="poster"
+            style="max-width: 20rem;" class="mb-3" :title="title" tag="article">
+        </b-card>
+    </nuxt-link>
+</template>
+<script>
+export default {
+    props: {
+        to: {
+            type: String,
+            default: ''
+        },
+        title: {
+            type: String,
+            default: ''
+        },
+        isMovie: {
+            type: Boolean,
+            default: true
+        },
+        badge: {
+            type: Number,
+            default: null
+        },
+        image: {
+            type: String,
+            default: ''
+        },
+    }
+}
+</script>
+<style>
+.card-title {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.badge {
+    position: absolute;
+    z-index: 1;
+    left: 1rem;
+}
+
+.card-body {
+    padding: .5rem;
+}
+
+.card-link {
+    display: block;
+    margin: 0 auto;
+}
+</style>
