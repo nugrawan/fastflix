@@ -5,7 +5,7 @@
             <div class="swiper-wrapper">
                 <div v-for="item in data" :key="item._id" class="swiper-slide">
                     <div class="slider-content">
-                        <CardItems :title="item.title" :episode="item.episode"
+                        <CardItems :title="item.title" :badge="isMovie ? item.qualityResolution : item.episode"
                             :to="isMovie ? `movies/${item._id}` : `series/${item._id}`" :image="item.posterImg"
                             :type="item.type" :is-movie="isMovie" />
                     </div>
@@ -46,7 +46,7 @@ export default {
 }
 
 .card-container {
-    width: 100%;
+    width: 90%;
     margin: auto;
 }
 
@@ -65,6 +65,7 @@ export default {
 .swiper-button-prev {
     top: 40%;
     color: red;
+    width: 0;
 }
 
 .slider-content {

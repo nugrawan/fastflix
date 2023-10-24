@@ -1,6 +1,6 @@
 <template>
     <nuxt-link class="card-link" :to="to">
-        <b-badge v-if="isMovie" variant="danger"> {{ badge }}</b-badge>
+        <b-badge v-if="isMovie" variant="success"> {{ badge }}</b-badge>
         <b-badge v-else variant="danger">Episode {{ badge }}</b-badge>
         <b-card bg-variant="transparent" img-top text-variant="white" :img-src="image" img-alt="poster"
             style="max-width: 20rem;" class="mb-3" :title="title" tag="article">
@@ -23,7 +23,7 @@ export default {
             default: true
         },
         badge: {
-            type: Number,
+            type: [Number, String],
             default: null
         },
         image: {

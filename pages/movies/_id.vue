@@ -2,22 +2,20 @@
     <TheDetail :datas="movieDetail" :streams="movieStream" />
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
+    async asyncData({ store, params }) {
+        await store.dispatch('getMovieDetail', params.id);
+        await store.dispatch('getMovieStream', params.id);
+        return {}
+    },
     head() {
         return {
             title: 'FastFlix - Detail: ' + this.$route.params.id
         }
     },
     computed: {
-        ...mapState(['movieDetail', 'movieStream']),
+        ...mapGetters(['movieDetail', 'movieStream']),
     },
-    mounted() {
-        this.getMovieDetail(this.$route.params.id)
-        this.getMovieStream(this.$route.params.id)
-    },
-    methods: {
-        ...mapActions(['getMovieDetail', 'getMovieStream']),
-    }
 }
 </script>

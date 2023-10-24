@@ -4,21 +4,19 @@
     </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
+    async fetch({ store }) {
+        await store.dispatch('getRecentMovies')
+        return {}
+    },
     head() {
         return {
-            title: 'FastFlix - Series'
+            title: 'FastFlix - Movies'
         }
     },
     computed: {
-        ...mapState(['recentMovies']),
-    },
-    mounted() {
-        this.getRecentMovies()
-    },
-    methods: {
-        ...mapActions(['getRecentMovies'])
+        ...mapGetters(['recentMovies']),
     }
 }
 </script>

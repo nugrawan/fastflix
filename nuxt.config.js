@@ -14,9 +14,14 @@ export default {
   router: {
     extendRoutes(routes, resolve) {
       routes.push({
-        name: 'detail',
+        name: 'series-detail',
         path: '/series:id',
         component: resolve(__dirname, 'pages/series/_id.vue')
+      })
+      routes.push({
+        name: 'movies-detail',
+        path: '/movies:id',
+        component: resolve(__dirname, 'pages/movies/_id.vue')
       })
     }
   },
@@ -59,6 +64,12 @@ export default {
     manifest: {
       lang: 'en',
     },
+  },
+
+  loading: {
+    color: 'white',
+    height: '3px',
+    continuous: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
