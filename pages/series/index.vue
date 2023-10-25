@@ -1,17 +1,41 @@
 <template>
-    <div class="container">
-        <CardContainer class="grid-container">
-            <CardItems class="card" v-for="serie in recentSeries" :key="serie.title" :title="serie.title"
-                :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :type="serie.type"
-                :is-movie="false" />
-        </CardContainer>
+    <div class="container mt-5">
+        <section>
+            <h3>Recent Upload</h3>
+            <CardContainer title="Recent upload">
+                <CardItems v-for="serie in recentSeries" :key="serie.title" class="card" :title="serie.title"
+                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :type="serie.type"
+                    :is-movie="false" />
+            </CardContainer>
+        </section>
+        <section>
+            <h3>Top Rated</h3>
+            <CardContainer title="Top reted">
+                <CardItems v-for="serie in topRatedSeries" :key="serie.title" class="card" :title="serie.title"
+                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :type="serie.type"
+                    :is-movie="false" />
+            </CardContainer>
+        </section>
+        <section>
+            <h3>Popular</h3>
+            <CardContainer title="Popular">
+                <CardItems v-for="serie in popularSeries" :key="serie.title" class="card" :title="serie.title"
+                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :type="serie.type"
+                    :is-movie="false" />
+            </CardContainer>
+        </section>
+
     </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
 export default {
     async fetch({ store }) {
-        await store.dispatch('getRecentMovies', true)
+        await Promise.all([
+            store.dispatch('getRecentMovies', true),
+            store.dispatch('getPopularMovies', true),
+            store.dispatch('getTopRatedMovies', true),
+        ]);
         return {}
     },
     head() {
@@ -20,30 +44,24 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['recentSeries']),
+        ...mapGetters(['recentSeries', 'popularSeries', 'topRatedSeries']),
     }
 }
 </script>
-<style>
+<style scoped>
 .card {
     width: 100%;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 20px;
+section {
+    margin-bottom: 1.5rem;
 }
 
-@media screen and (max-width : 960px) {
-    .grid-container {
-        grid-template-columns: repeat(6, 1fr);
-    }
+h3 {
+    margin-bottom: 1rem;
 }
 
-@media screen and (max-width : 580px) {
-    .grid-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
+.badge {
+    left: 1px;
 }
 </style>

@@ -41,6 +41,10 @@ export default {
     margin: 0 1rem 2rem;
 }
 
+.badge {
+    left: 1rem;
+}
+
 .card-header {
     padding: 0px;
 }

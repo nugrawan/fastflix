@@ -35,18 +35,13 @@ export default {
 </script>
 <style>
 .card-title {
-    font-size: 1rem;
+    font-size: small;
     font-weight: 400;
 }
-
-/* .card-img-top {
-    width: 100%;
-} */
 
 .badge {
     position: absolute;
     z-index: 1;
-    left: 1rem;
 }
 
 .card-body {
@@ -60,7 +55,7 @@ export default {
 
 @media screen and (max-width: 960px) {
     .card-title {
-        font-size: small;
+        font-size: smaller;
     }
 }
 
