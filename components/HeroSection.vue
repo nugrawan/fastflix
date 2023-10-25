@@ -36,4 +36,18 @@
     z-index: 20;
     color: white;
 }
+
+@media screen and (max-width: 960px) {
+
+    .jumbotron .lead,
+    .jumbotron p,
+    .jumbotron a {
+        font-size: xx-small;
+    }
+
+    .display-3 {
+        font-size: 3rem;
+    }
+
+}
 </style>

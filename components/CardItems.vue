@@ -39,6 +39,10 @@ export default {
     font-weight: 400;
 }
 
+/* .card-img-top {
+    width: 100%;
+} */
+
 .badge {
     position: absolute;
     z-index: 1;
@@ -52,5 +56,17 @@ export default {
 .card-link {
     display: block;
     margin: 0 auto;
+}
+
+@media screen and (max-width: 960px) {
+    .card-title {
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .card-title {
+        font-size: xx-small;
+    }
 }
 </style>

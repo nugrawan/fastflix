@@ -11,12 +11,9 @@
                 <b-navbar-nav>
                     <b-nav-item to="/series">Series</b-nav-item>
                     <b-nav-item to="/movies">Movies</b-nav-item>
-                    <b-nav-item to="#">Drama</b-nav-item>
                     <b-nav-item-dropdown text="Country" right>
-                        <b-dropdown-item to="#">EN</b-dropdown-item>
-                        <b-dropdown-item to="#">ES</b-dropdown-item>
-                        <b-dropdown-item to="#">RU</b-dropdown-item>
-                        <b-dropdown-item to="#">FA</b-dropdown-item>
+                        <b-dropdown-item v-for="country in countries" :key="country.name"
+                            :to="'/country/' + country.parameter">{{ country.name }}</b-dropdown-item>
                     </b-nav-item-dropdown>
 
                     <b-nav-item-dropdown right>
@@ -38,9 +35,29 @@
         </b-navbar>
     </header>
 </template>
+<script>
+import { mapGetters } from 'vuex'
+export default {
+    async asyncData({ store }) {
+        await store.dispatch('getCountries')
+        return {}
+    },
+    computed: {
+        ...mapGetters(['countries'])
+    }
+}
+</script>
 <style>
 header {
     background-color: black;
     width: 100%;
+}
+
+.dropdown-menu {
+    background-color: black;
+    max-height: 100vh;
+    overflow-y: auto;
+    height: auto;
+    flex-wrap: wrap;
 }
 </style>

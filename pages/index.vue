@@ -14,6 +14,7 @@ export default {
   layout: 'home',
   async fetch({ store }) {
     await Promise.all([
+      store.dispatch('getCountries'),
       store.dispatch('getRecentMovies'),
       store.dispatch('getRecentMovies', true),
       store.dispatch('getPopularMovies'),
@@ -24,7 +25,7 @@ export default {
     return {}
   },
   computed: {
-    ...mapGetters(['recentMovies', 'popularMovies', 'topRatedMovies', 'recentSeries', 'popularSeries', 'topRatedSeries'])
+    ...mapGetters(['countries', 'recentMovies', 'popularMovies', 'topRatedMovies', 'recentSeries', 'popularSeries', 'topRatedSeries'])
   },
 }
 </script>

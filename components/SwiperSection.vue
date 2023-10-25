@@ -37,8 +37,8 @@ export default {
 <style scoped>
 .swiper-title {
     font-size: 1.5rem;
-    color: azure;
-    margin: 0 1rem 1rem;
+    color: white;
+    margin: 0 1rem 2rem;
 }
 
 .card-header {
@@ -47,7 +47,7 @@ export default {
 
 .card-container {
     width: 90%;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .swiper {
