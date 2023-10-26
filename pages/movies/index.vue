@@ -2,25 +2,25 @@
     <div class="container mt-5">
         <section>
             <h3>Recent Upload</h3>
-            <CardContainer title="Recent upload">
+            <CardContainer>
                 <CardItems v-for="movie in recentMovies" :key="movie.title" class="card" :title="movie.title"
-                    :badge="movie.qualityResolution" :to="`movies/${movie._id}`" :image="movie.posterImg" :type="movie.type"
+                    :badge="movie.qualityResolution" :to="`movies/${movie._id}`" :image="movie.posterImg"
                     :is-movie="true" />
             </CardContainer>
         </section>
         <section>
             <h3>Top Rated</h3>
-            <CardContainer title="Top reted">
+            <CardContainer>
                 <CardItems v-for="movie in topRatedMovies" :key="movie.title" class="card" :title="movie.title"
-                    :badge="movie.qualityResolution" :to="`movies/${movie._id}`" :image="movie.posterImg" :type="movie.type"
+                    :badge="movie.qualityResolution" :to="`movies/${movie._id}`" :image="movie.posterImg"
                     :is-movie="true" />
             </CardContainer>
         </section>
         <section>
             <h3>Popular</h3>
-            <CardContainer title="Popular">
+            <CardContainer>
                 <CardItems v-for="movie in popularMovies" :key="movie.title" class="card" :title="movie.title"
-                    :badge="movie.qualityResolution" :to="`movies/${movie._id}`" :image="movie.posterImg" :type="movie.type"
+                    :badge="movie.qualityResolution" :to="`movies/${movie._id}`" :image="movie.posterImg"
                     :is-movie="true" />
             </CardContainer>
         </section>
@@ -59,9 +59,5 @@ section {
 
 h3 {
     margin-bottom: 1rem;
-}
-
-.badge {
-    left: 1px;
 }
 </style>

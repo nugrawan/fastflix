@@ -7,7 +7,7 @@
                     <div class="slider-content">
                         <CardItems :title="item.title" :badge="isMovie ? item.qualityResolution : item.episode"
                             :to="isMovie ? `movies/${item._id}` : `series/${item._id}`" :image="item.posterImg"
-                            :type="item.type" :is-movie="isMovie" />
+                            :is-movie="isMovie" />
                     </div>
                 </div>
             </div>
@@ -17,6 +17,9 @@
     </b-card-group>
 </template>
 <script>
+import { Swiper, Navigation, Pagination } from 'swiper';
+import 'swiper/swiper-bundle.css';
+Swiper.use([Navigation, Pagination]);
 export default {
     props: {
         data: {
@@ -32,6 +35,61 @@ export default {
             default: true
         }
     },
+
+    mounted() {
+        // eslint-disable-next-line no-unused-vars
+        const swiper = new Swiper('.swiper', {
+            direction: 'horizontal',
+            loop: false,
+            modules: [Navigation, Pagination],
+
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+
+            breakpoints: {
+                0: {
+                    slidesPerView: 2,
+                    spaceBetween: 3,
+                    slidesPerGroup: 2,
+                },
+                320: {
+                    slidesPerView: 3,
+                    spaceBetween: 5,
+                    slidesPerGroup: 2
+                },
+                480: {
+                    slidesPerView: 4,
+                    spaceBetween: 10,
+                    slidesPerGroup: 3,
+                },
+                640: {
+                    slidesPerView: 5,
+                    spaceBetween: 10,
+                    slidesPerGroup: 4,
+                },
+                900: {
+                    slidesPerView: 7,
+                    spaceBetween: 10,
+                    slidesPerGroup: 6,
+                },
+                1200: {
+                    slidesPerView: 8,
+                    spaceBetween: 15,
+                    slidesPerGroup: 7,
+                }
+            }
+        })
+    }
 }
 </script>
 <style scoped>
@@ -39,10 +97,6 @@ export default {
     font-size: 1.5rem;
     color: white;
     margin: 0 1rem 2rem;
-}
-
-.badge {
-    left: 1rem;
 }
 
 .card-header {

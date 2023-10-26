@@ -4,14 +4,6 @@
     </b-card-group>
 </template>
 <script>
-export default {
-    // props: {
-    //     title: {
-    //         type: String,
-    //         default: ''
-    //     }
-    // }
-}
 </script>
 <style>
 .grid-container {

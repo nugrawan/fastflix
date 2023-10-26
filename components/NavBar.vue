@@ -13,7 +13,9 @@
                     <b-nav-item to="/movies">Movies</b-nav-item>
                     <b-nav-item-dropdown text="Country" right>
                         <b-dropdown-item v-for="country in countries" :key="country.name"
-                            :to="'/country/' + country.parameter">{{ country.name }}</b-dropdown-item>
+                            :to="'/country/' + country.parameter">{{ country.name }}
+                            <b-badge variant="dark">{{ country.numberOfContents }}</b-badge>
+                        </b-dropdown-item>
                     </b-nav-item-dropdown>
 
                     <b-nav-item-dropdown right>
@@ -59,5 +61,11 @@ header {
     overflow-y: auto;
     height: auto;
     flex-wrap: wrap;
+    width: 15rem;
+}
+</style>
+<style scoped>
+.badge {
+    position: relative;
 }
 </style>

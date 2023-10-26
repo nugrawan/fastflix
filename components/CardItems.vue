@@ -39,6 +39,10 @@ export default {
     font-weight: 400;
 }
 
+article {
+    margin: 0;
+}
+
 .badge {
     position: absolute;
     z-index: 1;

@@ -4,24 +4,21 @@
             <h3>Recent Upload</h3>
             <CardContainer title="Recent upload">
                 <CardItems v-for="serie in recentSeries" :key="serie.title" class="card" :title="serie.title"
-                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :type="serie.type"
-                    :is-movie="false" />
+                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :is-movie="false" />
             </CardContainer>
         </section>
         <section>
             <h3>Top Rated</h3>
             <CardContainer title="Top reted">
                 <CardItems v-for="serie in topRatedSeries" :key="serie.title" class="card" :title="serie.title"
-                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :type="serie.type"
-                    :is-movie="false" />
+                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :is-movie="false" />
             </CardContainer>
         </section>
         <section>
             <h3>Popular</h3>
             <CardContainer title="Popular">
                 <CardItems v-for="serie in popularSeries" :key="serie.title" class="card" :title="serie.title"
-                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :type="serie.type"
-                    :is-movie="false" />
+                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :is-movie="false" />
             </CardContainer>
         </section>
 

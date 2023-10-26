@@ -23,6 +23,11 @@ export default {
         path: '/movies:id',
         component: resolve(__dirname, 'pages/movies/_id.vue')
       })
+      routes.push({
+        name: 'country-list',
+        path: '/country:country',
+        component: resolve(__dirname, 'pages/country/_country.vue')
+      })
     }
   },
 
@@ -30,9 +35,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '@/plugins/swiper.js'
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

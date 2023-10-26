@@ -6,6 +6,7 @@ export const state = () => ({
     topRatedMovies: [],
     topRatedSeries: [],
     countries: [],
+    countryList: [],
     movieDetail: {},
     serieDetail: {},
     movieStream: {},
@@ -34,6 +35,9 @@ export const mutations = {
     COUNTRIES(state, data) {
         state.countries = data;
     },
+    COUNTRY_LIST(state, data) {
+        state.countryList = data;
+    },
     MOVIE_DETAIL(state, data) {
         state.movieDetail = data;
     },
@@ -61,9 +65,8 @@ export const actions = {
         const movies = await this.$axios.get(isSeries ? '/top-rated/series' : '/top-rated/movies');
         commit(isSeries ? 'TOP_RATED_SERIES' : 'TOP_RATED_MOVIES', movies.data);
     },
-    async getCountries({ commit }) {
-        const countries = await this.$axios.get('/countries');
-        console.log(countries);
+    async getCountries({ commit }, country = 'usa') {
+        const countries = await this.$axios.get('/countries/' + country);
         commit('COUNTRIES', countries.data);
     },
     async getMovieDetail({ commit }, id) {
@@ -108,6 +111,7 @@ export const getters = {
     topRatedMovies: (state) => state.topRatedMovies,
     topRatedSeries: (state) => state.topRatedSeries,
     countries: (state) => state.countries,
+    countryList: (state) => state.countryList,
     movieDetail: (state) => state.movieDetail,
     serieDetail: (state) => state.serieDetail,
     movieStream: (state) => state.movieStream,
