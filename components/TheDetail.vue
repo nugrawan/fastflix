@@ -1,13 +1,13 @@
 <template>
     <b-container class="bv-example-row">
         <div>
-            <h3 class="title-detail mb-3">{{ datas.title }}</h3>
+            <h3 class="title-detail mt-3">{{ datas.title }}</h3>
         </div>
         <b-row v-if="streams.length > 0" class="stream-container">
             <b-col v-for="stream in streams" v-show="stream.provider === 'HYDRAX'" :key="stream.provider" cols="8"
                 class="mx-auto">
                 <b-spinner v-if="!stream" variant="white" label="Spinning"></b-spinner>
-                <div v-else class="trailer-stream">
+                <div v-else class="movie-stream">
                     <b-embed type="iframe" aspect="16by9" :src="stream.url" allowfullscreen></b-embed>
                 </div>
             </b-col>
@@ -129,9 +129,11 @@ export default {
     text-align: center;
 }
 
-.trailer-stream {
+.movie-stream {
     width: 100%;
     margin: 0 auto;
+    padding: 3px;
+    background-color: rgba(255, 255, 255, 0.062);
 }
 
 .card {

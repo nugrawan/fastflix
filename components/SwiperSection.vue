@@ -96,7 +96,7 @@ export default {
 .swiper-title {
     font-size: 1.5rem;
     color: white;
-    margin: 0 1rem 2rem;
+    margin: 0 0rem 2rem;
 }
 
 .card-header {
@@ -113,6 +113,7 @@ export default {
     overflow: hidden;
     width: 100%;
     position: relative;
+    margin-bottom: 3rem;
 }
 
 .swiper-wrapper {
@@ -121,7 +122,7 @@ export default {
 
 .swiper-button-next,
 .swiper-button-prev {
-    top: 40%;
+    top: 50%;
     color: red;
     width: 0;
 }

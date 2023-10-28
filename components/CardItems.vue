@@ -46,10 +46,17 @@ article {
 .badge {
     position: absolute;
     z-index: 1;
+    border-radius: 0;
+    margin: 1px;
+}
+
+.card-link+.card-link {
+    margin-left: 0;
 }
 
 .card-body {
-    padding: .5rem;
+    padding: 0;
+    margin-top: .3rem;
 }
 
 .card-link {
@@ -66,6 +73,17 @@ article {
 @media screen and (max-width: 580px) {
     .card-title {
         font-size: xx-small;
+    }
+
+    .badge {
+        font-size: 50%;
+    }
+}
+</style>
+<style scoped>
+@media (min-width: 576px) {
+    .card-deck .card {
+        margin-left: 0;
     }
 }
 </style>

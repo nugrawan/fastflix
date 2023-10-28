@@ -7,10 +7,36 @@ export const state = () => ({
     topRatedSeries: [],
     countries: [],
     countryList: [],
+    years: [],
+    yearList: [],
     movieDetail: {},
     serieDetail: {},
     movieStream: {},
     serieStream: {},
+    genreList: [],
+    searchedMovies: [],
+    genres: [
+        "action",
+        "adventure",
+        "animation",
+        "biography",
+        "comedy",
+        "crime",
+        "documentary",
+        "drama",
+        "family",
+        "fantasy",
+        "history",
+        "horror",
+        "music",
+        "mystery",
+        "romance",
+        "school",
+        "sci-fi",
+        "sport",
+        "thriller",
+        "war"
+    ]
 });
 
 export const mutations = {
@@ -38,6 +64,15 @@ export const mutations = {
     COUNTRY_LIST(state, data) {
         state.countryList = data;
     },
+    YEARS(state, data) {
+        state.years = data;
+    },
+    YEAR_LIST(state, data) {
+        state.yearList = data;
+    },
+    SEARCHED_MOVIES(state, data) {
+        state.searchedMovies = data;
+    },
     MOVIE_DETAIL(state, data) {
         state.movieDetail = data;
     },
@@ -49,6 +84,12 @@ export const mutations = {
     },
     SERIE_STREAM(state, data) {
         state.serieStream = data;
+    },
+    GENRES(state, data) {
+        state.genres = data;
+    },
+    GENRE_LIST(state, data) {
+        state.genreList = data;
     },
 };
 
@@ -65,9 +106,29 @@ export const actions = {
         const movies = await this.$axios.get(isSeries ? '/top-rated/series' : '/top-rated/movies');
         commit(isSeries ? 'TOP_RATED_SERIES' : 'TOP_RATED_MOVIES', movies.data);
     },
-    async getCountries({ commit }, country = 'usa') {
-        const countries = await this.$axios.get('/countries/' + country);
+    async getCountries({ commit }) {
+        const countries = await this.$axios.get('/countries');
         commit('COUNTRIES', countries.data);
+    },
+    async getCountryList({ commit }, country) {
+        const movies = await this.$axios.get('/countries/' + country);
+        commit('COUNTRY_LIST', movies.data);
+    },
+    async getYears({ commit }) {
+        const years = await this.$axios.get('/years');
+        commit('YEARS', years.data);
+    },
+    async getGenreList({ commit }, genre) {
+        const movie = await this.$axios.get('/genres/' + genre);
+        commit('GENRE_LIST', movie.data);
+    },
+    async getYearList({ commit }, year) {
+        const movies = await this.$axios.get('/years/' + year);
+        commit('YEAR_LIST', movies.data);
+    },
+    async searchMovies({ commit }, id) {
+        const movies = await this.$axios.get('/search/' + id);
+        commit('SEARCHED_MOVIES', movies.data);
     },
     async getMovieDetail({ commit }, id) {
         try {
@@ -112,6 +173,11 @@ export const getters = {
     topRatedSeries: (state) => state.topRatedSeries,
     countries: (state) => state.countries,
     countryList: (state) => state.countryList,
+    genres: (state) => state.genres,
+    genreList: (state) => state.genreList,
+    years: (state) => state.years,
+    yearList: (state) => state.yearList,
+    searchedMovies: (state) => state.searchedMovies,
     movieDetail: (state) => state.movieDetail,
     serieDetail: (state) => state.serieDetail,
     movieStream: (state) => state.movieStream,

@@ -1,14 +1,14 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'FastFlix',
+    title: 'FastFlix - Streaming Movie And Series',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favico.ico' }],
   },
 
   router: {
@@ -25,8 +25,27 @@ export default {
       })
       routes.push({
         name: 'country-list',
-        path: '/country:country',
-        component: resolve(__dirname, 'pages/country/_country.vue')
+        path: '/filter',
+        exact: true,
+        component: resolve(__dirname, 'pages/filter/country.vue')
+      })
+      routes.push({
+        name: 'genre-list',
+        path: '/filter',
+        exact: true,
+        component: resolve(__dirname, 'pages/filter/genre.vue')
+      })
+      routes.push({
+        name: 'year-list',
+        path: '/filter',
+        exact: true,
+        component: resolve(__dirname, 'pages/filter/year.vue')
+      })
+      routes.push({
+        name: 'searched-movies',
+        path: '/search/:id',
+        exact: true,
+        component: resolve(__dirname, 'pages/search/_id.vue')
       })
     }
   },
