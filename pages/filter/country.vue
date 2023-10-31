@@ -1,8 +1,9 @@
 <template>
-    <div class="container mt-5">
+    <div class="container mt-2">
+        <BreadCrumb :items="[{ text: 'Filters' }, { text: 'Country' }, { text: $route.query.country, active: true }]" />
         <section>
             <h3>Movies - {{ $route.query.country }}</h3>
-            <CardContainer>
+            <CardContainer :total="countryList.length">
                 <CardItems v-for="movie in countryList" :key="movie.title" class="card" :title="movie.title"
                     :badge="movie.qualityResolution" :to="`/movies/${movie._id}`" :image="movie.posterImg"
                     :is-movie="true" />

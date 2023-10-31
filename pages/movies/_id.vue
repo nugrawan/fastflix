@@ -1,5 +1,8 @@
 <template>
-    <TheDetail :datas="movieDetail" :streams="movieStream" />
+    <b-container>
+        <BreadCrumb :items="[{ text: 'Movies', href: '/movies' }, { text: movieDetail.title, active: true }]" />
+        <TheDetail :datas="movieDetail" :streams="movieStream" />
+    </b-container>
 </template>
 <script>
 import { mapGetters } from 'vuex'

@@ -2,6 +2,10 @@
     <b-container class="bv-example-row">
         <div>
             <h3 class="title-detail mt-3">{{ datas.title }}</h3>
+
+            <h4 v-if="datas.type === 'series'" text-variant="dark">Season {{ datas.seasons.length }} Episode {{
+                $route.query.eps
+            }}</h4>
         </div>
         <b-row v-if="streams.length > 0" class="stream-container">
             <b-col v-for="stream in streams" v-show="stream.provider === 'HYDRAX'" :key="stream.provider" cols="8"

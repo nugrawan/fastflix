@@ -94,8 +94,8 @@ export const mutations = {
 };
 
 export const actions = {
-    async getRecentMovies({ commit }, isSeries = false) {
-        const movies = await this.$axios.get(isSeries ? '/series' : '/movies');
+    async getRecentMovies({ commit }, isSeries = false, page = '') {
+        const movies = await this.$axios.get(isSeries ? '/series' + page : '/movies' + page);
         commit(isSeries ? 'RECENT_SERIES' : 'RECENT_MOVIES', movies.data);
     },
     async getPopularMovies({ commit }, isSeries = false) {

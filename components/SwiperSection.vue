@@ -6,8 +6,8 @@
                 <div v-for="item in data" :key="item._id" class="swiper-slide">
                     <div class="slider-content">
                         <CardItems :title="item.title" :badge="isMovie ? item.qualityResolution : item.episode"
-                            :to="isMovie ? `movies/${item._id}` : `series/${item._id}`" :image="item.posterImg"
-                            :is-movie="isMovie" />
+                            :to="isMovie ? `movies/${item._id}` : `series/${item._id}?eps=${item.episode}`"
+                            :image="item.posterImg" :is-movie="isMovie" />
                     </div>
                 </div>
             </div>

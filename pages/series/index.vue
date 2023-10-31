@@ -1,27 +1,11 @@
 <template>
-    <div class="container mt-5">
-        <section>
-            <h3>Recent Upload</h3>
-            <CardContainer title="Recent upload">
-                <CardItems v-for="serie in recentSeries" :key="serie.title" class="card" :title="serie.title"
-                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :is-movie="false" />
-            </CardContainer>
-        </section>
-        <section>
-            <h3>Top Rated</h3>
-            <CardContainer title="Top reted">
-                <CardItems v-for="serie in topRatedSeries" :key="serie.title" class="card" :title="serie.title"
-                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :is-movie="false" />
-            </CardContainer>
-        </section>
-        <section>
-            <h3>Popular</h3>
-            <CardContainer title="Popular">
-                <CardItems v-for="serie in popularSeries" :key="serie.title" class="card" :title="serie.title"
-                    :badge="serie.episode" :to="`series/${serie._id}`" :image="serie.posterImg" :is-movie="false" />
-            </CardContainer>
-        </section>
-
+    <div class="container mt-2">
+        <BreadCrumb :items="[{ text: 'Series', active: true }]" />
+        <AllCategory to="/series/all/recent-upload" title="Recent Uploaded" :is-movies="false" :data="recentSeries"
+            :bread="false" />
+        <AllCategory to="/series/all/popular" title="Popular" :is-movies="false" :data="popularSeries" :bread="false" />
+        <AllCategory to="/series/all/top-rated" title="Top Rated" :is-movies="false" :data="topRatedSeries"
+            :bread="false" />
     </div>
 </template>
 <script>
@@ -45,20 +29,3 @@ export default {
     }
 }
 </script>
-<style scoped>
-.card {
-    width: 100%;
-}
-
-section {
-    margin-bottom: 1.5rem;
-}
-
-h3 {
-    margin-bottom: 1rem;
-}
-
-.badge {
-    left: 1px;
-}
-</style>

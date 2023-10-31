@@ -1,30 +1,9 @@
 <template>
-    <div class="container mt-5">
-        <section>
-            <h3>Recent Upload</h3>
-            <CardContainer>
-                <CardItems v-for="movie in recentMovies" :key="movie.title" class="card" :title="movie.title"
-                    :badge="movie.qualityResolution" :to="`movies/${movie._id}`" :image="movie.posterImg"
-                    :is-movie="true" />
-            </CardContainer>
-        </section>
-        <section>
-            <h3>Top Rated</h3>
-            <CardContainer>
-                <CardItems v-for="movie in topRatedMovies" :key="movie.title" class="card" :title="movie.title"
-                    :badge="movie.qualityResolution" :to="`movies/${movie._id}`" :image="movie.posterImg"
-                    :is-movie="true" />
-            </CardContainer>
-        </section>
-        <section>
-            <h3>Popular</h3>
-            <CardContainer>
-                <CardItems v-for="movie in popularMovies" :key="movie.title" class="card" :title="movie.title"
-                    :badge="movie.qualityResolution" :to="`movies/${movie._id}`" :image="movie.posterImg"
-                    :is-movie="true" />
-            </CardContainer>
-        </section>
-
+    <div class="container mt-2">
+        <BreadCrumb :items="[{ text: 'Movies', active: true }]" />
+        <AllCategory to="/movies/all/recent-upload" title="Recent Uploaded" :data="recentMovies" :bread="false" />
+        <AllCategory to="/movies/all/popular" title="Popular" :data="popularMovies" :bread="false" />
+        <AllCategory to="/movies/all/top-rated" title="Top Rated" :data="topRatedMovies" :bread="false" />
     </div>
 </template>
 <script>

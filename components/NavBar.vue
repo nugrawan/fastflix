@@ -12,7 +12,7 @@
                     <b-nav-item to="/series">Series</b-nav-item>
                     <b-nav-item to="/movies">Movies</b-nav-item>
                     <b-nav-item-dropdown text="Countries" right>
-                        <b-dropdown-item v-for="country in countries" :key="country.name"
+                        <b-dropdown-item v-for="country in sortedCountries" :key="country.name"
                             :to="'/filter/country?country=' + country.parameter">{{ country.name }}
                             <b-badge variant="dark">{{ country.numberOfContents }}</b-badge>
                         </b-dropdown-item>
@@ -35,18 +35,12 @@
 
                 <b-navbar-nav class="ml-auto search-container">
                     <b-nav-form>
-                        <b-form-input debounce="1000" v-model="searchId" type="search" size="default"
-                            placeholder="Search Title and Actor">
+                        <b-form-input v-model="searchId" type="search" placeholder="Title, actors and directors"
+                            @keydown.enter="search()">
                             <b-spinner variant="light" label="Spinning"></b-spinner></b-form-input>
-                        <b-button size="md" class="my-2 my-sm-0" type="submit" variant="danger"
-                            @submit="searchMoviesId">Search</b-button>
+                        <b-button :to="'/search/' + searchId" size="md" class="my-2 my-sm-0"
+                            variant="danger">Search</b-button>
                     </b-nav-form>
-                    <b-list-group v-if="movies.length > 0" class="search-list">
-                        <b-list-group-item v-for="movie in movies" :key="movie._id" variant="dark" class="search-list-item"
-                            href="#">{{ movie.title }}</b-list-group-item>
-                    </b-list-group>
-                    <b-list-group-item v-else-if="searchId.length !== 0" variant="light" class="search-list" href="#">Not
-                        Results</b-list-group-item>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
@@ -58,25 +52,23 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     data() {
         return {
-            searchId: '',
-            movies: []
+            searchId: ''
         }
     },
     computed: {
-        ...mapGetters(['countries', 'years', 'genres', 'searchedMovies']),
-    },
-    watch: {
-        searchId: 'searchMoviesId'
+        ...mapGetters(['countries', 'years', 'genres']),
+        sortedCountries() {
+            return [...this.countries].sort((a, b) => a.name.localeCompare(b.name));
+        },
     },
     mounted() {
         this.getCountries()
         this.getYears()
     },
     methods: {
-        ...mapActions(['getCountries', 'getYears', 'searchMovies']),
-        searchMoviesId() {
-            this.searchMovies(this.searchId);
-            this.movies = this.searchedMovies
+        ...mapActions(['getCountries', 'getYears']),
+        search() {
+            this.$router.push('/search/' + this.searchId);
         }
     }
 }

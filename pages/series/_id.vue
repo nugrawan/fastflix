@@ -1,7 +1,9 @@
 <template>
-    <TheDetail :datas="serieDetail" :streams="serieStream" />
+    <b-container>
+        <BreadCrumb class="" :items="[{ text: 'Series', href: '/series' }, { text: serieDetail.title, active: true }]" />
+        <TheDetail :datas="serieDetail" :streams="serieStream" />
+    </b-container>
 </template>
-  
 <script>
 import { mapGetters } from 'vuex'
 export default {
@@ -20,4 +22,3 @@ export default {
     },
 }
 </script>
-  

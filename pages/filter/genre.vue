@@ -1,5 +1,6 @@
 <template>
-    <div class="container mt-5">
+    <div class="container mt-2">
+        <BreadCrumb :items="[{ text: 'Filters' }, { text: 'Genre' }, { text: $route.query.genre, active: true }]" />
         <section>
             <h3>Movies - {{ $route.query.genre }}</h3>
             <CardContainer>
